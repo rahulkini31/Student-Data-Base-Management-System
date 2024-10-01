@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Periods</title>
+    <style>
+        body {
+            font-family: 'Helvetica', sans-serif;
+            margin: 20px;
+            background-color: #f8f9fa; /* Light background for better contrast */
+            color: #333; /* Dark text for readability */
+        }
+        
+        h1 {
+            color: #007BFF; /* Blue color for the header */
+            margin-bottom: 20px;
+        }
+        
+        a {
+            text-decoration: none; /* No underline for links */
+        }
+
+        button {
+            padding: 10px 15px;
+            border: none;
+            background-color: #4CAF50; /* Green background for buttons */
+            color: white;
+            cursor: pointer;
+            border-radius: 5px;
+            transition: background-color 0.3s; /* Smooth transition */
+        }
+
+        button:hover {
+            background-color: #45a049; /* Darker green on hover */
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-bottom: 20px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1); /* Shadow effect for the table */
+            background-color: #ffffff; /* White background for the table */
+        }
+
+        th, td {
+            border: 1px solid #ddd; /* Light gray borders for table cells */
+            padding: 12px; /* Increased padding for better spacing */
+            text-align: left; /* Left align text */
+        }
+
+        th {
+            background-color: #007BFF; /* Blue background for headers */
+            color: white; /* White text for headers */
+        }
+
+        tr:nth-child(even) {
+            background-color: #f2f2f2; /* Light gray for even rows */
+        }
+
+        .actions {
+            display: flex; /* Flexbox for action buttons */
+            gap: 10px; /* Space between buttons */
+        }
+    </style>
+</head>
+<body>
+    <h1>Periods</h1>
+    <a href="/period/create"><button>Create Period</button></a>
+    <table>
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Year</th>
+                <th>Name</th>
+                <th>Start Time</th>
+                <th>End Time</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            <% periods.forEach(period => { %>
+                <tr>
+                    <td><%= period.id %></td>
+                    <td><%= period.year_name %></td>
+                    <td><%= period.name %></td>
+                    <td><%= period.start_time %></td>
+                    <td><%= period.end_time %></td>
+                    <td class="actions">
+                        <a href="/period/update/<%= period.id %>"><button>Update</button></a>
+                        <a href="/period/delete/<%= period.id %>"><button>Delete</button></a>
+                    </td>
+                </tr>
+            <% }) %>
+        </tbody>
+    </table>
+</body>
+</html>

@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>classes List</title>
+    <style>
+        /* In-file CSS */
+        body {
+            font-family: Helvetica, Arial, sans-serif;
+            margin: 20px;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-bottom: 20px;
+        }
+        th, td {
+            border: 1px solid #ddd;
+            padding: 8px;
+        }
+        th {
+            background-color: #f2f2f2;
+        }
+        button {
+            padding: 10px 15px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            background-color: #007BFF;
+            color: white;
+            font-size: 14px;
+        }
+        button:hover {
+            background-color: #0056b3;
+        }
+    </style>
+</head>
+<body>
+    <h1>classes List</h1>
+    <a href="/classes/create"><button>Create classes</button></a>
+    <table>
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Subject</th>
+                <th>Teacher</th>
+                <th>Term</th>
+                <th>Start Period</th>
+                <th>End Period</th>
+                <th>Classroom</th>
+                <th>Name</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            <% classes.forEach(function(classes) { %>
+                <tr>
+                    <td><%= classes.id %></td>
+                    <td><%= classes.subject_name %></td>
+                    <td><%= classes.teacher_first + ' ' + classes.teacher_last %></td>
+                    <td><%= classes.term_name %></td>
+                    <td><%= classes.start_period_name %></td>
+                    <td><%= classes.end_period_name %></td>
+                    <td><%= classes.classroom_name %></td>
+                    <td><%= classes.name %></td>
+                    <td>
+                        <a href="/classes/update/<%= classes.id %>"><button>Update</button></a>
+                        <a href="/classes/delete/<%= classes.id %>"><button>Delete</button></a>
+                    </td>
+                </tr>
+            <% }) %>
+        </tbody>
+    </table>
+</body>
+</html>
